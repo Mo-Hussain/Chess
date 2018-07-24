@@ -32,6 +32,7 @@ private:
 
 public:
   ChessBoard();
+  /* */
   void submitMove(const char* startPos, const char* endPos);
   void resetBoard();
   void setupBoard();
@@ -40,8 +41,7 @@ public:
   ChessPosition convertMove(const char* Pos);
   ChessPiece* getPiece(ChessPosition position);
   const char* getColourString(Colour colour);
-  void movePiece(ChessPiece* selectedPiece, ChessPiece* endPiece,
-                 ChessPosition start, ChessPosition end);
+  void movePiece(ChessPiece* selectedPiece, ChessPiece* endPiece, ChessPosition start, ChessPosition end);
   void reverseMove(ChessPiece* strPiece, ChessPiece* endpiece, ChessPosition start, ChessPosition end);
   bool isMoveObstructed(int steps, ChessPosition* obstructions[]);
   bool isInCheck(ChessPosition* kingPos, ChessMove** threatMoves, ChessMove** obstructedThreatMoves, int& numThreatMoves, int& numObsMoves);

@@ -28,11 +28,6 @@ public:
   bool operator ==(const ChessPosition rhs);
   bool isPosinPath(ChessPosition* path[], int pathNum);
 
-
-  
-
 };
-
-
 
 #endif

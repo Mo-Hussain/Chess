@@ -109,13 +109,6 @@ void ChessBoard::submitMove(const char* startPos, const char* endPos){
         cout << getColourString(switchColour()) << " is in check" << endl;
       }
     }
-    // else if(isInStalemate(opsKingPos)){
-    //   cout << getColourString(switchColour()) << " is in stalemate" << endl;
-    // }
-
-
-
-
   }
   catch (exception& e)
   {
@@ -137,19 +130,11 @@ void ChessBoard::resetBoard(){
 // print chessboard for debugging
 void ChessBoard::printChessBoard(){
   cout << endl;
-
-  // cout << " ";
-  // for(int j = 0; j <= 7; j++){
-  //   cout << j << "   ";
-  // }
-  // cout << endl;
-
   cout << " ";
   for(int j = 0; j <= 7; j++){
     cout << (char)(j+ASCI_CHAR_CONVERSION) << "   ";
   }
   cout << endl;
-
 
   for(int i = 7; i >= 0; i--){
     for(int j = 0; j <= 7; j++){
@@ -163,7 +148,7 @@ void ChessBoard::printChessBoard(){
       cout << "|";
 
     }
-    cout << " " << i+1 << /*" " << i << */ endl;
+    cout << " " << i+1 << endl;
   }
   cout << endl;
 }
