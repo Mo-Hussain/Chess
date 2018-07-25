@@ -1,7 +1,8 @@
 #ifndef PAWN
 #define PAWN
 
-#include "ChessPiece.h"
+#include "ChessMove.h"
+
 
 class Pawn:public ChessPiece{
 private:

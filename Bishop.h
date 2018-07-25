@@ -1,7 +1,7 @@
 #ifndef BISHOP
 #define BISHOP
 
-#include "ChessPiece.h"
+#include "ChessMove.h"
 
 class Bishop:public ChessPiece
 {

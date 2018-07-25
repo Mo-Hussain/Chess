@@ -7,9 +7,8 @@ Knight::Knight(Colour colour, const char* symbol, ChessBoard* chessBoard):
 
 bool Knight::validateMove(ChessPosition start, ChessPosition end, ChessPiece* endPiece, int& steps,
                           ChessPosition* obstructions[]){
-  if(ChessPosition::isKnightMove(start, end, steps)){
+  if(ChessMove::isKnightMove(start, end, steps)){
       return true;
   }
   return false;
 }
-

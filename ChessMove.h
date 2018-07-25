@@ -29,8 +29,16 @@ public:
 	ChessPosition** getPath();
 	// returns a pointer to a positions a numbered step on the path
 	ChessPosition* getPathPosition(int posNum);
-	// returns the number of steps in the move 
+	// returns the number of steps in the move
 	int getSteps();
+	// check if move is moving vertically
+	bool static isLinearRankMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]);
+	// check if move is movving horizontally
+	bool static isLinearFileMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]);
+	// check if move is moving piece diagonally
+	bool static isDiagonalMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]);
+	// check if move is moving piece in "L" shape for a knight
+	bool static isKnightMove(ChessPosition start, ChessPosition end, int& steps);
 
 };
 

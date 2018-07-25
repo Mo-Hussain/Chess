@@ -6,7 +6,7 @@ Bishop::Bishop(Colour colour, const char* symbol, ChessBoard* chessBoard):
 
 bool Bishop::validateMove(ChessPosition start, ChessPosition end, ChessPiece* endPiece, int& steps,
                           ChessPosition* obstructions[]){
-  if(ChessPosition::isDiagonalMove(start, end, steps, obstructions)){
+  if(ChessMove::isDiagonalMove(start, end, steps, obstructions)){
       return true;
   }
   return false;

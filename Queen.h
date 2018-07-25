@@ -1,7 +1,8 @@
 #ifndef QUEEN
 #define QUEEN
 
-#include "ChessPiece.h"
+#include "ChessMove.h"
+
 
 class Queen:public ChessPiece{
 

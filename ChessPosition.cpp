@@ -1,7 +1,6 @@
 #include "ChessPosition.h"
 
 ChessPosition::ChessPosition(int _rank, int _file): rank(_rank), file(_file){
-
 }
 
 int ChessPosition::getRank(){
@@ -10,83 +9,6 @@ int ChessPosition::getRank(){
 
 int ChessPosition::getFile(){
   return file;
-}
-
-bool ChessPosition::isLinearRankMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]){
-  if(start.file != end.file){;
-    return false;
-  }
-  steps = abs(end.rank - start.rank);
-
-  for(int i = 0; i < steps-1; i++){
-    if(start.rank < end.rank){
-      obstructions[i] = new ChessPosition(start.rank + i+1, start.file);
-    }
-    if(start.rank > end.rank){
-      obstructions[i] = new ChessPosition(start.rank - i-1, start.file);
-    }
-  }
-  return true;
-}
-
-bool ChessPosition::isLinearFileMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]){
-  if(start.rank != end.rank){
-    return false;
-  }
-  steps = abs(end.file - start.file);
-
-  for(int i = 0; i < steps-1; i++){
-    if(start.file < end.file){
-      obstructions[i] = new ChessPosition(start.rank, start.file + i+1);
-    }
-    if(start.file > end.file){
-      obstructions[i] = new ChessPosition(start.rank, start.file - i-1);
-    }
-  }
-  return true;
-}
-
-bool ChessPosition::isDiagonalMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]){
-  int changeInFile = abs(end.file - start.file);
-  int changeInRank = abs(end.rank - start.rank);
-
-  if (changeInFile != changeInRank){
-    return false;
-  }
-  steps = changeInFile;
-
-  for(int i = 0; i < steps-1; i++){
-    if(start.rank < end.rank){
-      if(start.file < end.file){
-        obstructions[i] = new ChessPosition(start.rank + i+1, start.file + i+1);
-      }
-      if(start.file > end.file){
-        obstructions[i] = new ChessPosition(start.rank + i+1, start.file - i-1);
-      }
-    }
-    if(start.rank > end.rank){
-      if(start.file < end.file){
-        obstructions[i] = new ChessPosition(start.rank - i-1, start.file + i+1);
-      }
-      if(start.file > end.file){
-        obstructions[i] = new ChessPosition(start.rank - i-1, start.file - i-1);
-      }
-    }
-  }
-  return true;
-}
-
-bool ChessPosition::isKnightMove(ChessPosition start, ChessPosition end, int& steps){
-  int changeInFile = abs(end.file - start.file);
-  int changeInRank = abs(end.rank - start.rank);
-  steps = 1;
-  if(changeInFile == 1 && changeInRank == 2){
-    return true;
-  }
-  if(changeInFile == 2 && changeInRank == 1){
-    return true;
-  }
-  return false;
 }
 
 void ChessPosition::setRank(int _rank){

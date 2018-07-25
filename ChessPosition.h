@@ -1,3 +1,9 @@
+/**
+ * class used to represent a chess baord position
+ * contains a rank and file integer values
+ */
+
+
 #ifndef CHESSPOSITION
 #define CHESSPOSITION
 
@@ -18,14 +24,15 @@ public:
   int getFile();
   void setRank(int _rank);
   void setFile(int _file);
-  bool static isLinearRankMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]);
-  bool static isLinearFileMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]);
-  bool static isDiagonalMove(ChessPosition start, ChessPosition end, int& steps, ChessPosition* obstructions[]);
-  bool static isKnightMove(ChessPosition start, ChessPosition end, int& steps);
+  // get an array of positions that neighbor the current position
   void getNieghbors(ChessPosition* nieghbors[]);
+  // used to loop through all available positions on a baord
   bool nextPosition();
+  // printing for debugg
   void printPos(const char* pieceName);
+  // check if two positions are equal
   bool operator ==(const ChessPosition rhs);
+  // check if the position is in a path of positions 
   bool isPosinPath(ChessPosition* path[], int pathNum);
 
 };

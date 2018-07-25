@@ -19,7 +19,7 @@ bool Pawn::validateMove(ChessPosition start, ChessPosition end, ChessPiece* endP
     }
   }
 
-  if(ChessPosition::isLinearRankMove(start, end, steps, obstructions) && steps == 1){
+  if(ChessMove::isLinearRankMove(start, end, steps, obstructions) && steps == 1){
     if(endPiece == nullptr){
       hasMoved = true;
       return true;
@@ -27,7 +27,7 @@ bool Pawn::validateMove(ChessPosition start, ChessPosition end, ChessPiece* endP
     return false;
   }
 
-  if(ChessPosition::isLinearRankMove(start, end, steps, obstructions) && (steps == 2) && !hasMoved){
+  if(ChessMove::isLinearRankMove(start, end, steps, obstructions) && (steps == 2) && !hasMoved){
     if(endPiece == nullptr){
       hasMoved = true;
       return true;
@@ -35,11 +35,10 @@ bool Pawn::validateMove(ChessPosition start, ChessPosition end, ChessPiece* endP
     return false;
   }
 
-  if(ChessPosition::isDiagonalMove(start, end, steps, obstructions) && steps == 1){
+  if(ChessMove::isDiagonalMove(start, end, steps, obstructions) && steps == 1){
     if(endPiece == nullptr){
       return false;
     }
     return true;
   }
 }
-
