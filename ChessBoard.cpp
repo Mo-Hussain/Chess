@@ -23,8 +23,8 @@ void ChessBoard::submitMove(const char* startPos, const char* endPos){
   int numObsCheckMoves = 0;
 
   // convert move into ChessPosition object for start and end positions
-  ChessPosition strPos = convertMove(startPos);
-  ChessPosition ePos = convertMove(endPos);
+  ChessPosition strPos = convertPosition(startPos);
+  ChessPosition ePos = convertPosition(endPos);
 
   // retrieves pieces a thos positions
   ChessPiece* selectedPiece = getPiece(strPos);
@@ -81,7 +81,7 @@ void ChessBoard::submitMove(const char* startPos, const char* endPos){
     }
 
     // move the piece
-    movePiece(selectedPiece, endSquare, strPos, ePos);
+    movePiece(selectedPiece, strPos, ePos);
 
     // if the current piece is king adjust the king pointer
     if(strcmp(selectedPiece->getName(),"King") == 0){
@@ -154,7 +154,7 @@ void ChessBoard::printChessBoard(){
 }
 
 // convert the input move to a array positions for source and end
-ChessPosition ChessBoard::convertMove(const char* position){
+ChessPosition ChessBoard::convertPosition(const char* position){
     int rank  = (int)position[1] - ASCI_INT_CONVERSION;
     int file = (int)position[0] - ASCI_CHAR_CONVERSION;
     ChessPosition chessPosition(rank, file);
@@ -216,7 +216,7 @@ ChessPiece* ChessBoard::getPiece(ChessPosition position){
   return board[position.getRank()][position.getFile()];
 }
 
-void ChessBoard::movePiece(ChessPiece* selectedPiece, ChessPiece* endPiece, ChessPosition start, ChessPosition end){
+void ChessBoard::movePiece(ChessPiece* selectedPiece, ChessPosition start, ChessPosition end){
   board[end.getRank()][end.getFile()] = selectedPiece;
   board[start.getRank()][start.getFile()] = nullptr;
 }
@@ -253,7 +253,6 @@ bool ChessBoard::isInCheck(ChessPosition* kingPos, ChessMove** threatMoves, Ches
         ChessPosition* obstructions[GRID_WIDTH];
         // check if opposition piece has valid move to king
         if(piece->validateMove(*pos, *kingPos, kingPiece, steps, obstructions)){
-          // pos->printPos(piece->getName());
 
           // create ChessMove object
           ChessMove* move = new ChessMove(piece, pos, steps, obstructions);
@@ -290,7 +289,7 @@ bool ChessBoard::testMove(ChessPiece* selectedPiece, ChessPosition strPos, Chess
     return false;
   }
 
-  movePiece(selectedPiece, endPiece, strPos, ePos);
+  movePiece(selectedPiece, strPos, ePos);
 
   ChessMove* checkMoves[NUM_PER_PLAYER];
   ChessMove* obstructedCheckMoves[NUM_PER_PLAYER];
